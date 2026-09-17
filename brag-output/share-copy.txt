@@ -1,0 +1,36 @@
+=== X / Twitter ===
+Your GPU is from 2019. You can still run a 9B coding model on it.
+
+5.7 GB on disk. 6.9 GB VRAM at 16K context. 100% tool calling.
+
+No API key. No bill. No session limits. Pull the weights once, then unplug the network — it keeps working.
+
+github.com/omarahmed2enty9ty9-oss/qwen3.5-abliterated-local
+
+=== LinkedIn ===
+I benchmarked a 9B coding model on a six-year-old RTX 2060 SUPER and published the setup.
+
+Measured on 8 GB of VRAM:
+• 5.7 GB on disk (IQ4_XS)
+• 6.9 GB VRAM at 16K context
+• 100% tool calling, 100% edit validity
+
+The interesting part isn't the model — it's that the hardware floor for useful local inference is now a 2019 gaming GPU. No API key, no per-token billing, no session caps, and nothing leaves the machine.
+
+Repo is config and benchmarks only; weights stay with their upstream authors.
+
+github.com/omarahmed2enty9ty9-oss/qwen3.5-abliterated-local
+
+=== Reddit (r/LocalLLaMA) ===
+Qwen3.5-9B abliterated on an 8GB 2060 SUPER — setup + numbers
+
+Wrote up what it actually takes to fit this in 8 GB, since most of the pain is VRAM contention rather than the model.
+
+- IQ4_XS, 5.7 GB on disk, ~6.9 GB VRAM at 16K ctx
+- 8/12 on my 12-task coding suite (stock Qwen3.5-9B scores 11/12 — abliteration costs real accuracy, worth knowing)
+- 100% tool calling, 100% edit validity
+- q8_0 KV cache roughly halves KV VRAM vs f16 default
+
+Gotcha that cost me an afternoon: Qwen3.5 defaults to thinking ON and will burn the whole token budget reasoning, returning an empty response. `think: false` is a top-level request field, not an options key, and `PARAMETER think false` in a Modelfile is rejected by current Ollama.
+
+Config only, no weights. Credits to Qwen / huihui_ai / mradermacher.

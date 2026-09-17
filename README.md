@@ -1,5 +1,9 @@
 # qwen3.5-abliterated-local
 
+[![Watch the 20s overview](brag-output/brag.jpg)](brag-output/brag.mp4)
+
+*20-second overview — click to play*
+
 Run a 9B coding model entirely on your own machine. No API key, no account, no
 per-token bill, no session limits, no request leaving your network.
 

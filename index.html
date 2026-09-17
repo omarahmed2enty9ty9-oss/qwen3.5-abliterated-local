@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>qwen3.5-abliterated-local — a 9B coding model on a 2019 GPU</title>
+<meta name="description" content="Run a 9B coding model entirely on your own machine. No API key, no bill, no session limits, nothing leaves your network.">
+<style>
+  :root{
+    --bg:#0a0d12; --panel:#11161e; --line:#1f2733;
+    --ink:#e8edf5; --dim:#8a97a8; --accent:#5ee39c; --warn:#ffb454;
+    --mono:ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;
+       background-image:radial-gradient(900px 500px at 78% -8%,rgba(94,227,156,.10),transparent 62%)}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px}
+  header{padding:110px 0 70px}
+  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 20px}
+  h1{font-size:clamp(38px,6.4vw,66px);line-height:1.04;letter-spacing:-.025em;margin:0 0 22px;font-weight:660}
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{font-size:20px;color:var(--dim);max-width:620px;margin:0 0 36px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 22px;border-radius:9px;text-decoration:none;font-weight:600;font-size:15px}
+  .btn.p{background:var(--accent);color:#06210f}
+  .btn.s{border:1px solid var(--line);color:var(--ink)}
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-size:13px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:0 0 26px;font-weight:500}
+  pre{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:20px 22px;overflow-x:auto;margin:0;
+      font-family:var(--mono);font-size:14.5px;line-height:1.85;color:var(--ink)}
+  pre .c{color:var(--dim)}
+  pre .g{color:var(--accent)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:20px}
+  .stat .n{font-family:var(--mono);font-size:29px;color:var(--accent);line-height:1.15}
+  .stat .l{font-size:13px;color:var(--dim);margin-top:6px}
+  ul.plain{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+  ul.plain li{padding-left:26px;position:relative;color:var(--dim)}
+  ul.plain li::before{content:"→";position:absolute;left:0;color:var(--accent);font-family:var(--mono)}
+  ul.plain b{color:var(--ink);font-weight:600}
+  .note{background:rgba(255,180,84,.06);border:1px solid rgba(255,180,84,.28);border-radius:11px;padding:20px 22px;color:var(--dim);font-size:15px}
+  .note b{color:var(--warn)}
+  footer{padding:50px 0 80px;color:var(--dim);font-size:14px;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Local · Private · Offline</p>
+  <h1>A 9B coding model on a <em>six-year-old</em> gaming GPU.</h1>
+  <p class="lede">No API key. No account. No per-token bill. No session limits. Nothing leaves your machine.</p>
+  <div class="cta">
+    <a class="btn p" href="https://github.com/omarahmed2enty9ty9-oss/qwen3.5-abliterated-local">Get it on GitHub</a>
+    <a class="btn s" href="#start">Setup</a>
+  </div>
+</header>
+
+<section>
+  <h2>Measured on an RTX 2060 SUPER · 8 GB</h2>
+  <div class="stats">
+    <div class="stat"><div class="n">5.7 GB</div><div class="l">on disk, IQ4_XS</div></div>
+    <div class="stat"><div class="n">6.9 GB</div><div class="l">VRAM at 16K context</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">tool calling</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">edit validity</div></div>
+  </div>
+</section>
+
+<section id="start">
+  <h2>Three commands</h2>
+  <pre><span class="c"># pull the weights</span>
+ollama pull hf.co/mradermacher/Huihui-Qwen3.5-9B-abliterated-GGUF:IQ4_XS
+
+<span class="c"># build the local model</span>
+ollama create qwen-local -f Modelfile
+
+<span class="c"># run it</span>
+ollama run qwen-local</pre>
+</section>
+
+<section>
+  <h2>What you get</h2>
+  <ul class="plain">
+    <li><b>Runs offline.</b> Pull the weights once, then unplug the network. It keeps working.</li>
+    <li><b>Nothing is uploaded.</b> Your code never leaves the machine — no provider, no retention policy, no terms of service.</li>
+    <li><b>No metering.</b> No tokens to count, no quota to hit, no bill at the end of the month.</li>
+    <li><b>OpenAI-compatible.</b> Serves on <code>127.0.0.1:11434/v1</code>, so most tools connect unchanged.</li>
+    <li><b>Old hardware is fine.</b> The 2060 SUPER shipped in 2019.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Fitting it in 8 GB</h2>
+  <p style="color:var(--dim);margin:0 0 22px">VRAM is the whole game. A typical desktop eats ~3 GB before the model loads, and the overflow silently lands on your CPU — an order of magnitude slower. Check what is holding it:</p>
+  <pre>nvidia-smi --query-compute-apps=pid,used_memory,process_name --format=csv
+
+<span class="c"># then confirm the model is fully resident</span>
+ollama ps   <span class="c">→</span> <span class="g">100% GPU</span></pre>
+</section>
+
+<section>
+  <h2>Straight answers</h2>
+  <div class="note">
+    <p style="margin:0 0 14px"><b>This is an abliterated model.</b> Abliteration suppresses the model's refusal behaviour. It is a real modification with real consequences, and you own what you do with it.</p>
+    <p style="margin:0"><b>It costs accuracy.</b> On the same 12-task suite the stock Qwen3.5-9B scores <b>11/12</b> against <b>8/12</b> here. If you only want a local coding model, use the stock build — it is better at the job.</p>
+  </div>
+</section>
+
+<footer>
+  <p style="margin:0 0 10px">Configuration and benchmarks only — no weights are distributed here.</p>
+  <p style="margin:0">Base model <a href="https://huggingface.co/Qwen">Qwen</a> · abliteration <a href="https://huggingface.co/huihui-ai">huihui_ai</a> · GGUF <a href="https://huggingface.co/mradermacher">mradermacher</a>. Weights carry their upstream licences.</p>
+</footer>
+
+</div>
+</body>
+</html>

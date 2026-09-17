@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>qwen3.5-abliterated-local — brag</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0a0d12; }
+
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        color: #e8edf5;
+      }
+
+      #bg { position: absolute; inset: 0; background: #0a0d12; }
+      #glow {
+        position: absolute; inset: 0;
+        background: radial-gradient(760px 620px at 76% 14%, rgba(94,227,156,0.16), transparent 64%);
+      }
+
+      .clip { position: absolute; inset: 0; display: flex; flex-direction: column;
+              align-items: center; justify-content: center; padding: 0 96px; }
+
+      .eyebrow { font-family: ui-monospace, monospace; font-size: 30px; letter-spacing: 0.16em;
+                 text-transform: uppercase; color: #5ee39c; }
+
+      .big { font-size: 118px; line-height: 1.02; letter-spacing: -0.03em; font-weight: 700;
+             text-align: center; }
+      .mid { font-size: 86px; line-height: 1.08; letter-spacing: -0.025em; font-weight: 700;
+             text-align: center; }
+      .accent { color: #5ee39c; }
+      .sub { font-size: 40px; color: #8a97a8; text-align: center; }
+
+      /* scene 3 — stats */
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; width: 100%; }
+      .stat { background: #11161e; border: 1px solid #1f2733; border-radius: 22px; padding: 44px 32px;
+              display: flex; flex-direction: column; align-items: flex-start; }
+      .stat .n { font-family: ui-monospace, monospace; font-size: 66px; color: #5ee39c; line-height: 1.1; }
+      .stat .l { font-size: 27px; color: #8a97a8; margin-top: 12px; }
+
+      /* scene 4 — commands */
+      .term { background: #11161e; border: 1px solid #1f2733; border-radius: 22px;
+              padding: 46px 42px; width: 100%; }
+      .cmd { font-family: ui-monospace, monospace; font-size: 31px; line-height: 1.55;
+             color: #e8edf5; word-break: break-all; }
+      .cmd + .cmd { margin-top: 30px; }
+      .cmd .c { color: #6b7a8d; display: block; font-size: 26px; margin-bottom: 6px; }
+
+      .url { font-family: ui-monospace, monospace; font-size: 33px; color: #5ee39c; text-align: center;
+             word-break: break-all; line-height: 1.5; }
+      .fine { font-size: 26px; color: #6b7a8d; text-align: center; }
+      .stack { display: flex; flex-direction: column; align-items: center; gap: 34px; width: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0"
+         data-width="1080" data-height="1920" data-duration="20">
+
+      <div id="bg"></div>
+      <div id="glow"></div>
+
+      <!-- 1 · hook -->
+      <section id="scene-1-hook" class="clip" data-start="0" data-duration="3.2">
+        <div class="stack">
+          <p class="big" id="s1a">Your GPU is from<span class="accent"> 2019</span>.</p>
+        </div>
+      </section>
+
+      <!-- 2 · reveal -->
+      <section id="scene-2-reveal" class="clip" data-start="3.2" data-duration="3.4">
+        <div class="stack">
+          <p class="mid" id="s2a">Run a <span class="accent">9B coding model</span> on it.</p>
+          <p class="sub" id="s2b">Locally. Offline. No account.</p>
+        </div>
+      </section>
+
+      <!-- 3 · proof -->
+      <section id="scene-3-proof" class="clip" data-start="6.6" data-duration="4.0">
+        <div class="stack">
+          <p class="eyebrow" id="s3h">Measured · RTX 2060 SUPER</p>
+          <div class="grid">
+            <div class="stat s3c"><div class="n">5.7 GB</div><div class="l">on disk</div></div>
+            <div class="stat s3c"><div class="n">6.9 GB</div><div class="l">VRAM at 16K</div></div>
+            <div class="stat s3c"><div class="n">100%</div><div class="l">tool calling</div></div>
+            <div class="stat s3c"><div class="n">100%</div><div class="l">edit validity</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 · show the thing -->
+      <section id="scene-4-commands" class="clip" data-start="10.6" data-duration="4.4">
+        <div class="stack">
+          <p class="eyebrow" id="s4h">Three commands</p>
+          <div class="term">
+            <p class="cmd s4c"><span class="c"># pull the weights</span>ollama pull …Qwen3.5-9B-abliterated-GGUF:IQ4_XS</p>
+            <p class="cmd s4c"><span class="c"># build it</span>ollama create qwen-local -f Modelfile</p>
+            <p class="cmd s4c"><span class="c"># run it</span>ollama run qwen-local</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 · punchline -->
+      <section id="scene-5-punchline" class="clip" data-start="15.0" data-duration="3.0">
+        <div class="stack">
+          <p class="big" id="s5a">Then <span class="accent">unplug</span> the network.</p>
+          <p class="sub" id="s5b">It keeps working.</p>
+        </div>
+      </section>
+
+      <!-- 6 · cta -->
+      <section id="scene-6-cta" class="clip" data-start="18.0" data-duration="2.0">
+        <div class="stack">
+          <p class="mid" id="s6a">qwen3.5-abliterated-local</p>
+          <p class="url" id="s6b">github.com/omarahmed2enty9ty9-oss</p>
+          <p class="fine" id="s6c">MIT config · no weights redistributed</p>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // 1 · hook
+      tl.fromTo("#s1a", { y: 54, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, ease: "power3.out" }, 0.15);
+      tl.to("#s1a", { opacity: 0, duration: 0.3, ease: "power2.in" }, 2.85);
+
+      // 2 · reveal
+      tl.fromTo("#s2a", { y: 46, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: "power3.out" }, 3.35);
+      tl.fromTo("#s2b", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 3.75);
+      tl.to(["#s2a", "#s2b"], { opacity: 0, duration: 0.3, ease: "power2.in" }, 6.25);
+
+      // 3 · proof
+      tl.fromTo("#s3h", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }, 6.75);
+      tl.fromTo(".s3c", { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", stagger: 0.13 }, 6.95);
+      tl.to(["#s3h", ".s3c"], { opacity: 0, duration: 0.3, ease: "power2.in" }, 10.25);
+
+      // 4 · show
+      tl.fromTo("#s4h", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }, 10.75);
+      tl.fromTo(".s4c", { x: -34, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "power3.out", stagger: 0.42 }, 11.0);
+      tl.to(["#s4h", ".s4c"], { opacity: 0, duration: 0.3, ease: "power2.in" }, 14.65);
+
+      // 5 · punchline
+      tl.fromTo("#s5a", { scale: 0.94, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 15.15);
+      tl.fromTo("#s5b", { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }, 15.7);
+      tl.to(["#s5a", "#s5b"], { opacity: 0, duration: 0.28, ease: "power2.in" }, 17.68);
+
+      // 6 · cta
+      tl.fromTo("#s6a", { y: 32, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 18.12);
+      tl.fromTo("#s6b", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }, 18.38);
+      tl.fromTo("#s6c", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 18.62);
+
+      // ambient
+      tl.fromTo("#glow", { opacity: 0.6 }, { opacity: 1, duration: 10, ease: "sine.inOut" }, 0);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
